@@ -1,0 +1,75 @@
+Pour démarrer avec les tests unitaires en JavaScript, 
+l'une des bibliothèques les plus populaires et efficaces est Jest. 
+Jest est largement utilisé pour tester des applications JavaScript, 
+notamment celles développées avec React, mais il est aussi parfaitement adapté pour des scripts JavaScript généraux. 
+Voici comment vous pouvez commencer à utiliser Jest pour vos tests unitaires :
+
+Étape 1: Installation de Jest
+
+Vous aurez besoin de Node.js installé sur votre système. 
+Une fois que Node.js est installé, 
+vous pouvez installer Jest à l'aide de npm (Node Package Manager) en exécutant cette commande dans votre terminal :
+
+bash
+npm init -y  # Crée un fichier package.json si vous n'en avez pas déjà un
+npm install --save-dev jest
+
+
+Étape 2: Configuration de Jest
+
+Vous pouvez ajouter un script de test dans votre fichier package.json pour faciliter l'exécution de Jest :
+
+json
+"scripts": {
+  "test": "jest"
+}
+
+Avec cette configuration, vous pourrez lancer vos tests en exécutant simplement npm test dans votre terminal.
+
+Étape 3: Écrire des Tests
+
+Jest utilise une syntaxe assez simple et claire pour écrire des tests. 
+Voici un exemple de fichier de test pour une fonction JavaScript simple :
+
+Fichier sum.js :
+
+javascript
+function sum(a, b) {
+  return a + b;
+}
+module.exports = sum;
+
+
+Fichier sum.test.js :
+
+javascript
+const sum = require('./sum');
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+
+Dans cet exemple, sum.test.js est le fichier de test pour sum.js. 
+La fonction test est utilisée pour définir un cas de test, 
+et 'expect' avec 'toBe' est utilisé pour affirmer que la fonction sum donne le résultat attendu.
+
+Étape 4: Exécuter les Tests
+
+Exécutez vos tests en tapant npm test dans votre terminal. 
+Jest va automatiquement trouver les fichiers de test dans votre projet 
+(les fichiers finissant par .test.js ou dans des dossiers nommés __tests__) et exécuter les tests qu'ils contiennent.
+
+Étape 5: Avancé avec Jest
+
+À mesure que vous vous familiarisez avec Jest, vous pouvez explorer des fonctionnalités plus avancées, telles que :
+
+    Mocks et Spies : Pour simuler des comportements dans vos tests.
+
+    Tests Asynchrones : Pour gérer le code qui opère de manière asynchrone.
+    
+    Couverture de Code : Pour analyser la quantité de code exécuté par vos tests.
+
+Jest est très bien documenté, et vous pouvez trouver de nombreuses ressources pour vous aider à maîtriser son utilisation.
+
+En suivant ces étapes, vous serez bien équipé pour commencer à tester vos applications JavaScript, 
+ce qui améliorera la qualité et la fiabilité de votre code.

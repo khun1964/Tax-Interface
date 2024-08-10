@@ -1,0 +1,18 @@
+Intégration avec Python et Flask
+
+Si vous souhaitez utiliser Python, Flask est un excellent choix pour les petits projets ou les prototypes rapides. Flask vous permet de configurer un serveur web assez rapidement et de gérer les requêtes HTTP facilement.
+
+Exemple Flask:
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/submit', methods=['POST'])
+def submit_income():
+    income = request.form['income']
+    return jsonify({"status": "success", "income_received": income})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+

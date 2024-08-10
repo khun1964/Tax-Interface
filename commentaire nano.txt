@@ -1,0 +1,35 @@
+sudo nano /etc/postgresql/14/main/postgresql.conf
+
+Commandes de Base de Nano
+
+    CTRL+O (Écrire) : Sauvegarde le fichier. Après avoir appuyé sur CTRL+O, tu devras appuyer sur Entrée pour confirmer le nom du fichier et effectuer la sauvegarde.
+    CTRL+X (Quitter) : Quitte l'éditeur. Si tu n'as pas sauvegardé tes modifications, nano te demandera si tu veux le faire avant de quitter.
+    CTRL+G (Aide) : Affiche l'aide de nano, où toutes les commandes clés sont listées.
+
+Navigation dans le Fichier
+
+    CTRL+A : Déplace le curseur au début de la ligne.
+    CTRL+E : Déplace le curseur à la fin de la ligne.
+    CTRL+_ (CTRL+SHIFT+- sur certains claviers) : Va à une ligne spécifique en saisissant le numéro de ligne.
+    CTRL+Y (Défiler vers le haut) : Fait défiler la page vers le haut.
+    CTRL+V (Défiler vers le bas) : Fait défiler la page vers le bas.
+    CTRL+C (Emplacement) : Affiche la position actuelle du curseur dans le fichier (ligne et colonne).
+
+Édition du Texte
+
+    CTRL+K (Couper) : Coupe la ligne entière où se trouve le curseur. Tu peux couper plusieurs lignes en répétant cette commande.
+    CTRL+U (Coller) : Colle le texte que tu as coupé précédemment.
+    CTRL+J (Justifier) : Formate le paragraphe actuel.
+    CTRL+W (Chercher) : Ouvre une invite de recherche. Saisis le texte que tu souhaites trouver et appuie sur Entrée.
+    CTRL+\ (Remplacer) : Lance une recherche et remplace. Tu seras d'abord invité à entrer le texte à rechercher, puis le texte par lequel le remplacer.
+
+Utilisation des Marqueurs
+
+    CTRL+^ (CTRL+6) : Démarre la sélection de texte à partir de la position du curseur.
+    CTRL+K (après avoir marqué) : Coupe tout le texte sélectionné.
+    CTRL+U (après avoir coupé) : Colle le texte sélectionné.
+
+Autres Commandes Utiles
+
+    ALT+U (Annuler) : Annule la dernière action effectuée.
+    ALT+E (Refaire) : Restaure la dernière action annulée.

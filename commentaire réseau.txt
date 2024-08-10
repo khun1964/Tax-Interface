@@ -1,0 +1,208 @@
+Pour changer le port sur lequel votre application Flask s'exécute, 
+vous devez modifier la configuration du serveur lorsque vous lancez l'application. 
+Par défaut, Flask utilise le port 5000, 
+mais vous pouvez facilement le changer en spécifiant un port différent dans la méthode app.run().
+
+Supposons que votre fichier app.py ressemble à quelque chose comme ceci :
+
+from flask import Flask
+
+app = Flask(__name__)
+
+# Vos routes et vues ici
+
+if __name__ == '__main__':
+    app.run()
+
+Pour changer le port, modifiez la dernière ligne comme suit : En  python
+
+    app.run(port=8000)  # Remplacez 8000 par le numéro de port souhaité
+
+Ainsi, si vous voulez que votre application s'exécute, par exemple, sur le port 8000,  
+votre fichier app.py devrait ressembler à ceci : En Python
+
+from flask import Flask
+
+app = Flask(__name__)
+
+# Vos routes et vues ici
+
+if __name__ == '__main__':
+    app.run(port=8000)
+
+Après avoir effectué cette modification, redémarrez votre serveur Flask. 
+Votre application devrait maintenant être accessible à l'adresse http://127.0.0.1:8000/ (
+ou quel que soit le port que vous avez choisi).
+
+Gardez à l'esprit que si vous utilisez un port inférieur à 1024, 
+vous pourriez avoir besoin de privilèges administratifs pour lancer le serveur sur ces ports sous certains systèmes d'exploitation.
+
+Changement de Port
+
+Pour changer le port, ajoutez simplement le paramètre port dans l'appel à app.run(). 
+Par exemple, pour utiliser le port 8000 : En Python
+
+if __name__ == '__main__':
+    app.run(debug=True, port=8000)
+
+Autres Ajouts Possibles
+
+Voici quelques idées sur ce que vous pourriez vouloir ajouter :
+
+    Plusieurs Routes :
+    Vous pouvez ajouter d'autres routes pour servir différentes pages ou gérer différentes fonctionnalités.
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+  
+Gestion des Erreurs :
+Flask permet de gérer les erreurs, comme les erreurs 404 (page non trouvée).
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+Utilisation de Variables dans les Routes :
+Vous pouvez utiliser des variables dans vos routes pour rendre vos URLs dynamiques.
+
+@app.route('/user/<username>')
+def show_user_profile(username):
+    # montre le profil d'un utilisateur spécifique
+    return f'User {username}'
+
+Méthodes POST et GET :
+Vous pouvez configurer des routes pour accepter différentes méthodes HTTP, comme GET et POST.
+
+from flask import request
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Traiter les données de connexion
+        pass
+    else:
+        # Afficher la page de connexion
+        return render_template('login.html')
+
+
+Utilisation de Flask Forms :
+    
+Pour des formulaires plus complexes, envisagez d'utiliser Flask-WTF pour gérer les formulaires de manière sécurisée.
+
+Connexion à une Base de Données :
+Si votre application a besoin de stocker des données, vous pouvez vous connecter à une base de données comme SQLite, MySQL, ou PostgreSQL.
+
+Utilisation de Templates :
+Utilisez le système de templating Jinja2 pour passer des données aux templates HTML et créer des pages web dynamiques.
+
+En combinant ces éléments, vous pouvez construire une application web complète et fonctionnelle avec Flask. N'oubliez pas de créer les templates HTML correspondants (index.html, about.html, 404.html, login.html, etc.) dans un dossier nommé templates dans le même répertoire que votre script Flask.
+
+
+
+L'erreur que vous rencontrez est due à une exception TemplateNotFound. 
+Cela signifie que Flask ne parvient pas à trouver le fichier de template index.html 
+que vous essayez de rendre avec la fonction render_template('index.html').
+
+Voici quelques étapes pour résoudre ce problème :
+
+1. Vérifier l'Emplacement du Fichier index.html
+
+Flask s'attend à trouver les templates dans un dossier nommé templates à la racine de votre projet. 
+Votre structure de dossier devrait ressembler à ceci :
+
+Project_test/
+│
+├── app.py
+├── templates/
+│   └── index.html
+└── ...
+
+Assurez-vous que :
+
+    Le dossier s'appelle bien templates.
+    Le fichier index.html est bien dans ce dossier.
+
+2. Contenu de index.html
+
+Vérifiez que le fichier index.html n'est pas vide et qu'il contient le HTML valide que vous souhaitez afficher.
+
+3. Droits d'Accès au Fichier
+
+Assurez-vous que le fichier index.html a les droits d'accès appropriés pour que Flask puisse le lire.
+
+4. Rafraîchir et Redémarrer
+
+Après avoir fait ces vérifications, rafraîchissez votre navigateur et/ou redémarrez votre serveur Flask pour voir si le problème est résolu.
+
+5. Chemins relatifs et absolus
+
+Si vous exécutez app.py depuis un autre répertoire, Flask pourrait ne pas trouver le chemin relatif vers templates. 
+Assurez-vous de lancer app.py depuis le répertoire où il se trouve.
+
+Si après avoir suivi ces étapes le problème persiste, vérifiez à nouveau le chemin et le nom du fichier. 
+Flask est assez précis sur la structure des dossiers et des fichiers pour les templates.
+
+
+
+
+HTML ET Adressage :
+
+Oui, vous pouvez absolument attribuer une adresse HTTP unique à chaque page HTML dans votre application Flask. 
+Pour ce faire, vous créez différentes routes pour chaque page. 
+Chaque route dans Flask est associée à une fonction, qui retourne le contenu de la page HTML que vous souhaitez afficher. 
+Vous pouvez utiliser la fonction render_template pour afficher les différentes pages HTML.
+
+Voici un exemple de base pour montrer comment vous pourriez configurer cela :
+
+Exemple avec Plusieurs Pages :
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+# Vous pouvez ajouter d'autres routes pour d'autres pages
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+Dans cet exemple, il y a trois routes :
+
+    @app.route('/') pour la page d'accueil (index.html).
+    @app.route('/about') pour une page À propos (about.html).
+    @app.route('/contact') pour une page de contact (contact.html).
+
+Chaque route est liée à une fonction qui retourne une page HTML différente. 
+Assurez-vous d'avoir les fichiers index.html, about.html, contact.html, etc., dans votre dossier templates.
+
+Accès aux Pages
+
+    Pour accéder à la page d'accueil, vous iriez à http://127.0.0.1:5000/ (ou quel que soit le port que vous utilisez).
+    Pour la page À propos, l'adresse serait http://127.0.0.1:5000/about.
+    Pour la page de contact, l'adresse serait http://127.0.0.1:5000/contact.
+
+Ce modèle peut être étendu pour autant de pages que vous avez besoin dans votre application. 
+Chaque page aura sa propre route et son propre fichier HTML dans le dossier templates.
+
+4. Traitement côté serveur avec Flask
+
+Dans votre application Flask, vous récupérerez les données soumises et les traiterez :
+
+@app.route('/traitement', methods=['POST'])
+def traiter_donnees():
+    nom = request.form['nom']
+    prenom = request.form['prenom']
+    # Traitez les données ici
+    return "Données reçues"

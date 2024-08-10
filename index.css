@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+/*
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif; 
+}
+ * permet d'attribuer à tous ces changements */
+
+/* Style général */
+header {
+    background-color:white;
+    width:max-content;
+    padding: 10px;
+    margin:auto;
+    height: 100px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.2), 0 6.7px 5.3px rgba(0, 0, 0, 0.2), 0 12.5px 10px rgba(0, 0, 0, 0.2), 0 22.3px 17.9px rgba(0, 0, 0, 0.2), 0 41.8px 33.4px rgba(0, 0, 0, 0.2), 0 100px 80px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+}      
+
+.container .titrePage {
+    color:black;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: normal;
+    width:max-content;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+} 
+
+
+.titre {
+    margin:auto;
+    border-radius: 0px;
+    background-color: rgb(208, 10, 226);  
+    padding: 20px;
+    display: flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;  
+    font-size: 30px;  
+    font-weight: bold;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.2), 0 6.7px 5.3px rgba(0, 0, 0, 0.2), 0 12.5px 10px rgba(0, 0, 0, 0.2), 0 22.3px 17.9px rgba(0, 0, 0, 0.2), 0 41.8px 33.4px rgba(0, 0, 0, 0.2), 0 100px 80px rgba(0, 0, 0, 0.2);
+    scroll-margin-top: 05px; /* Ajoutez ceci pour centrer horizontalement si nécessaire */
+}
+
+
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #d7e1d7;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width:100%;
+    height: 100vp;
+ }
+ 
+
+/* Style du formulaire */
+
+.form {
+    padding:40px
+}
+
+.form-control {
+    display:flex;
+    flex-direction: column;  /* Oriente les enfants verticalement */
+    align-items: flex-start; /* Alignez les enfants sur le côté gauche */
+    margin-top: 10px;
+    margin-bottom: 30px;
+    position: relative;
+}       
+
+
+.form-control label{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style des inputs */
+
+.form-control input{
+    width: 220px;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 300px;  /* on centre sur cette exemple la case input au centre */
+}
+
+.form-control.input:focus{
+    outline:0;
+    border-color:rgb(128, 128, 128);
+}
+
+
+.form-control.success input{
+    border-color: rgb(27, 169, 11);
+}
+
+.form-control.error input{
+    border-color: red;
+}
+
+/* Style des messages d'erreur et de validation */
+
+.form-control i {
+    position: absolute;
+    right: 14px;
+    top: 40px;
+    visibility: hidden;
+}    
+    
+.form-control small{
+    color: red(230, 20, 20);
+    position: absolute;
+    left:0;   
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form-control.error small {
+    color: rgb(230, 20, 20);
+    position:absolute;
+    left:0;
+    visibility: visible;
+}
+
+
+.form-control.success small {
+    visibility: hidden;
+}
+
+
+.form-control.success i.fa-check-circle{
+    color: rgb(27, 169, 11);
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    color: red;
+    visibility: visible;
+}
+
+
+
+/* Icones */
+.fas {
+    margin-left: 5px; /* Un peu d'espace après l'input */
+    color: #5cb85c; /* Couleur verte pour les icônes de validation */
+}
+
+
+
+small {
+    color: red; /* Couleur rouge pour les messages d'erreur */
+    visibility: hidden; /* Caché par défaut, visible en JS si nécessaire */
+    margin-left: 300px;
+    font-size: 20px; /* Taille de police légèrement plus petite */
+}
+
+/* Stylisation des selects */
+
+.form-control select {
+    width: 220px;;       /* Fait en sorte que le select prenne toute la largeur de son conteneur */
+    padding: 8px 12px; /* Ajoute un peu de padding pour une meilleure ergonomie */
+    border: 1px solid #ccc; /* Assortit la bordure à celle des inputs typiques */
+    border-radius: 4px; /* Assortit les coins arrondis à ceux des inputs typiques */
+    font-size: 16px;    /* Assure que la taille de police est uniforme avec d'autres inputs */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur définie */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* Stylisation des boutons */
+
+button {
+    padding: 15px 30px;
+    margin-top: 5px;
+    color: white;
+    background-color: #007bff; /* Bleu Bootstrap */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* Effet de main au survol */
+    transition: background-color 0.3s; /* Transition pour un effet de survol doux */
+    margin-left:auto;
+}
+
+button:hover {
+    background-color: #0056b3; /* Couleur plus foncée au survol */
+    color:white;
+    font-size: 20px ;
+    font-style: bold;
+}
+
+/* Boutons spéciaux de formulaire */
+
+input[type="reset"], button[type="submit"] {
+    display: flex;
+    background-color: #077607; /* Gris pour distinguer des actions primaires */
+    margin-top: 10px;
+    margin-left: 500px;
+}
+
+input[type="reset"]:hover, button[type="submit"]:hover {
+    background-color: #47ca05; /* Gris foncé au survol */
+    color:white;
+}
+
+/* Style du formulaire partie basse*/
+
+.form .btn{
+    width: 430px;
+    height: 50px;
+    background-color: rgb(208, 10, 226);  
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px; margin-right: 250px;
+    margin-left: 200px;
+    }
+
+
+
+.form .btn:hover {
+    background-color: #e10f0f;
+}
+
+
+
+.valide {
+        border: 2px solid green;
+    }
+
+    .invalide {
+        border: 2px solid red;
+}
+
+
+/* Style du formulaire partie basse*/
+
+.container {
+    background: rgb(250, 248, 242);
+    border-radius: 15px;
+    border: 6px solid rgb(221, 151, 229); 
+    border-color: #1adde4;
+    border-bottom-style: 15px;
+    overflow: hidden;    
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.2), 0 6.7px 5.3px rgba(0, 0, 0, 0.2), 0 12.5px 10px rgba(0, 0, 0, 0.2), 0 22.3px 17.9px rgba(0, 0, 0, 0.2), 0 41.8px 33.4px rgba(0, 0, 0, 0.2), 0 100px 80px rgba(0, 0, 0, 0.2);
+    margin: auto; /* Ajoutez ceci pour centrer horizontalement si nécessaire */
+    margin-top: 140px;
+    margin-bottom: 60px;
+    max-width: 100%;
+    width: 1000px;
+
+}
+
+
+.label {
+    width:400px;
+    text-align: left;  /* Aligner les textes des labels à droite pour une meilleure lisibilité */
+    font-size:medium;
+}
+
+
+.label, select {
+    width: 200px; /* Ajustez cette valeur selon vos besoins */
+    height: 40px; /* Vous pouvez également ajuster la hauteur si nécessaire */
+
+    /* Autres styles (par exemple, bordure, padding, etc.) */
+}
+
+
+
+input#enfants {
+    width: 100px; /* Ajustez cette valeur selon vos besoins */
+    height: 30px; /* Vous pouvez également ajuster la hauteur si nécessaire */
+    /* Autres styles (par exemple, bordure, padding, etc.) */
+}
+
+
+label, input, select {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 200px; /* Les éléments occupent toute la largeur de leur cellule */
+}
+
+
+
+/* Style du footer */
+
+footer {
+    width:98%;
+    background-color: #f50a93;
+    height:80px;
+    background-image:url(Footer/footer-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-right: 1em; /* Ajustez cette valeur pour créer un espace à droite */
+}
+
+
+footer p { 
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 1em;
+
+}
+
+label:hover {    /* fonctionne */
+    color:#f50a93;  
+}
+
+/* Style des médias requêtes */
+
+/* Requête de média pour les écrans jusqu'à 600px de large */
+@media screen and (max-width: 600px) {
+    .form {
+        width: 100%;           /* pleine largeur pour les petits écrans */
+        padding: 10px;         /* espace intérieur réduit */
+    }
+
+    body {
+        font-size: 16px;      /* taille de police plus petite */
+    }
+
+    /* Autres adaptations pour petits écrans */
+}
+
+/* Pour les écrans dont la hauteur est supérieure à 1080px */
+@media screen and (min-height: 1080px) {
+    #impôtFormulaire {
+        margin-top: 120px; /* Ajustez selon la hauteur du header */
+        /* Autres styles spécifiques */
+    }
+
+    /* Autres adaptations pour les écrans de hauteur supérieure à 1080px */
+}
+
+/* Pour les écrans dont la hauteur est inférieure à 1080px */
+@media screen and (max-height: 1079px) {
+    #impôtFormulaire {
+        margin-top: 100px; /* Ajustez en fonction de la hauteur réduite du header ou du contenu */
+        /* Autres styles spécifiques */
+    }
+
+    /* Autres adaptations pour les écrans de hauteur inférieure à 1080px */
+}
+ 

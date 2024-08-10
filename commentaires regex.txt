@@ -1,0 +1,76 @@
+1. Regex pour Email
+
+Les adresses email ont généralement la forme utilisateur@domaine.extension. 
+Voici comment nous pouvons construire un regex pour valider une adresse email :
+
+Étape 1: Valider le nom d'utilisateur
+
+    Le nom d'utilisateur peut contenir des lettres, des chiffres, des points, 
+    des tirets et des underscores.
+    Expression : [a-zA-Z0-9._-]+
+
+Étape 2: Valider le symbole @
+
+    Il doit y avoir un @ après le nom d'utilisateur.
+    Expression : @
+
+Étape 3: Valider le domaine
+
+    Le domaine peut contenir des lettres, des chiffres, 
+    des tirets et des points (mais pas consécutifs).
+    Expression : [a-zA-Z0-9.-]+
+
+Étape 4: Valider l'extension
+
+    L'extension doit être de 2 à 6 lettres 
+    (pour couvrir des cas comme .com, .info, .museum).
+    Expression : \.[a-zA-Z]{2,6}
+
+Regex Complet pour Email
+
+regex
+
+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}
+
+2. Regex pour Mot de Passe
+
+Pour un mot de passe, tu voudras peut-être inclure des règles pour augmenter la sécurité, comme une longueur minimale et la présence de divers types de caractères.
+
+Étape 1: Longueur minimum
+
+    Supposons une longueur minimum de 8 caractères.
+    Expression : .{8,}
+
+Étape 2: Inclure lettres majuscules et minuscules
+
+    Utiliser un lookahead pour vérifier la présence d'au moins une lettre minuscule et une majuscule.
+    Expression : (?=.*[a-z])(?=.*[A-Z])
+
+Étape 3: Inclure des chiffres
+
+    Utiliser un lookahead pour vérifier la présence d'au moins un chiffre.
+    Expression : (?=.*[0-9])
+
+Étape 4: Inclure des caractères spéciaux
+
+    Supposons que les caractères spéciaux autorisés sont @#$%^&+=
+    Expression : (?=.*[@#$%^&+=])
+
+Regex Complet pour Mot de Passe
+
+regex
+
+^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).{8,}$
+
+Explications Additionnelles
+
+    ?= dans les expressions est un "lookahead positif" 
+    qui permet de vérifier une condition sans consommer de caractères.
+
+    {n,} et {n,m} spécifient des quantités, n étant le minimum et m le maximum.
+    Le symbole ^ et $ sont des ancres qui indiquent respectivement 
+    le début et la fin d'une chaîne.
+
+En utilisant ces regex, 
+tu peux configurer la validation pour les adresses email et les mots de passe 
+selon des règles spécifiques, adaptant les expressions à tes besoins.

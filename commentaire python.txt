@@ -1,0 +1,125 @@
+Pour exécuter un fichier Python nommé app.py à partir de l'invite de commande, 
+vous n'avez pas besoin de démarrer l'interpréteur Python interactif. 
+Vous semblez être dans l'interpréteur Python interactif (>>>), 
+donc vous devriez d'abord en sortir pour revenir à l'invite de commande du terminal Linux.
+
+Voici les étapes à suivre :
+
+    Quitter l'interpréteur Python :
+        Vous pouvez quitter l'interpréteur Python en tapant exit() ou en utilisant le raccourci clavier Ctrl + D.
+
+    Exécuter votre script Python :
+        Une fois de retour dans l'invite de commande du terminal, naviguez jusqu'au répertoire contenant app.py si vous n'y êtes pas déjà.
+        Puis, lancez votre script en tapant python3 app.py (assurez-vous d'être dans le même répertoire que votre fichier app.py).
+
+Voici comment cela se présenterait dans le terminal :
+Pour exécuter un fichier Python nommé app.py à partir de l'invite de commande, 
+vous n'avez pas besoin de démarrer l'interpréteur Python interactif. 
+Vous semblez être dans l'interpréteur Python interactif (>>>), 
+donc vous devriez d'abord en sortir pour revenir à l'invite de commande du terminal Linux.
+
+Voici les étapes à suivre :
+
+    Quitter l'interpréteur Python :
+        Vous pouvez quitter l'interpréteur Python en tapant exit() ou en utilisant le raccourci clavier Ctrl + D.
+
+    Exécuter votre script Python :
+        Une fois de retour dans l'invite de commande du terminal, naviguez jusqu'au répertoire contenant app.py si vous n'y êtes pas déjà.
+        Puis, lancez votre script en tapant python3 app.py (assurez-vous d'être dans le même répertoire que votre fichier app.py).
+
+Voici comment cela se présenterait dans le terminal :
+>>> exit()
+benoit@benoit-VivoBook-ASUSLaptop-X570ZD-X570ZD:~/Project_test$ python3 app.py
+
+Cela exécutera app.py en utilisant Python 3.
+Assurez-vous que toutes les dépendances nécessaires pour app.py sont installées et que le script est compatible avec Python 3.10 que vous utilisez.
+
+D'après ce que vous décrivez, il semble que vous ayez tenté d'exécuter le script app.py directement dans l'interpréteur Python interactif, ce qui n'est pas la méthode correcte. L'interpréteur Python interactif est conçu pour exécuter du code Python ligne par ligne et ne peut pas directement exécuter des fichiers script.
+
+Pour exécuter correctement votre script app.py, suivez ces étapes :
+
+    Quitter l'interpréteur Python :
+        Si vous êtes toujours dans l'interpréteur Python (indiqué par >>>), quittez-le en tapant exit() ou en utilisant le raccourci clavier Ctrl + D.
+
+    Exécution du script dans le terminal :
+        Une fois que vous êtes de retour dans le terminal normal (pas dans l'interpréteur Python), assurez-vous d'être dans le répertoire où se trouve app.py.
+        Exécutez le script en tapant : python3 app.py.
+
+Voici à quoi cela devrait ressembler dans votre terminal :
+>>> exit()
+benoit@benoit-VivoBook-ASUSLaptop-X570ZD-X570ZD:~/Project_test$ python3 app.py
+
+Si vous tapez python3 app.py et que rien ne se passe (comme le suggère votre dernier exemple), cela pourrait signifier plusieurs choses :
+
+    Le script s'exécute sans erreur mais n'a pas de sortie : Vérifiez le code dans app.py pour vous assurer qu'il est censé produire une sortie ou effectuer une action visible.
+    
+    Le script est en attente ou en cours d'exécution : Si le script contient des processus de longue durée ou attend une entrée, il peut sembler qu'il ne se passe rien.
+    
+    Problèmes dans le script : Il peut y avoir des erreurs dans votre script qui ne provoquent pas l'arrêt du programme mais l'empêchent de s'exécuter comme prévu.
+
+Si vous rencontrez des problèmes persistants, vous devriez examiner le code dans app.py pour vous assurer qu'il est correct. 
+Vous pouvez également exécuter le script avec des options de débogage, 
+par exemple en utilisant un IDE qui permet de suivre le déroulement du programme pas à pas.
+
+D'après les informations fournies, il semble que vous ayez quelques confusions et problèmes lors de l'exécution de votre script app.py dans le terminal. Analysons les différentes étapes que vous avez suivies :
+
+    Tentative d'utilisation de cd sur un fichier :
+        La commande cd app.py que vous avez essayée est incorrecte car cd (change directory) est utilisée pour naviguer entre les dossiers, pas pour ouvrir ou exécuter des fichiers. app.py est un fichier, pas un dossier, d'où l'erreur bash: cd: app.py: N'est pas un dossier.
+
+    Tentative d'exécution avec python au lieu de python3 :
+        Lorsque vous avez essayé python app.py, le terminal vous a informé que la commande python n'était pas trouvée et a suggéré d'utiliser python3. Cela indique que sur votre système, python n'est pas le nom de commande par défaut pour Python 3, ce qui est courant sur les systèmes plus récents où Python 3 et Python 2 sont distinctement séparés.
+
+    Exécution avec python3 app.py :
+        Lorsque vous exécutez python3 app.py, il semble qu'il n'y ait pas de sortie ni de message d'erreur. 
+        Cela peut indiquer plusieurs choses :
+            Le script s'exécute correctement mais n'a aucune sortie visible ou attend une entrée utilisateur.
+            Le script contient un processus de longue durée ou est bloqué dans une boucle.
+            Le script a des problèmes, mais ils ne provoquent pas de message d'erreur explicite.
+
+Pourquoi cela fonctionne avec un clone mais pas avec celui-ci ?
+
+    Chemin ou environnement différent : Si le script fonctionne dans un clone du dossier mais pas dans l'original, 
+    cela peut être dû à des différences dans les chemins de fichiers, 
+    les variables d'environnement, ou les dépendances installées.
+
+    Différences dans les fichiers ou les configurations : 
+    il pourrait y avoir des différences subtiles dans les fichiers ou les configurations entre les deux dossiers.
+
+    Permissions : Vérifiez les permissions des fichiers. 
+    Il est possible que app.py dans le dossier original n'ait pas les permissions nécessaires pour s'exécuter.
+
+Solutions possibles
+
+    Vérifier les différences : Comparez les deux dossiers pour tout écart dans les fichiers, les chemins, ou les configurations.
+    Permissions : Vérifiez et, si nécessaire, modifiez les permissions de app.py avec chmod +x app.py.
+    Débogage : Ajoutez des instructions d'impression (print) dans app.py pour voir jusqu'où le script s'exécute.
+    Environnement : Assurez-vous que toutes les dépendances nécessaires sont installées et que l'environnement est configuré de la même manière dans les deux dossiers.
+
+En résumé, l'absence de sortie ou d'erreur lors de l'exécution de app.py nécessite une vérification détaillée du script et des conditions environnantes pour identifier le problème.
+
+
+
+Si vous avez effectué un copier-coller complet du dossier et que le script app.py fonctionne dans le dossier cloné mais pas dans l'original, cela élimine plusieurs causes communes comme les différences de fichiers ou de configurations. Cependant, il reste quelques possibilités à explorer :
+
+    Environnement d'exécution différent : Même avec un copier-coller complet, l'environnement d'exécution (par exemple, les variables d'environnement) pourrait différer entre les deux emplacements. Vérifiez si des variables d'environnement spécifiques sont nécessaires pour exécuter votre script.
+
+    
+    Chemin des dépendances : Si votre script dépend de fichiers locaux ou de modules Python spécifiques, assurez-vous que ces dépendances sont accessibles à partir du dossier original. Parfois, les chemins relatifs peuvent causer des problèmes si le script s'attend à ce que certains fichiers ou dossiers soient dans un emplacement spécifique par rapport à son propre emplacement.
+
+    Permissions de fichier : Même si vous avez copié les fichiers, il est possible que les permissions n'aient pas été conservées. Utilisez ls -l pour vérifier les permissions de app.py dans les deux dossiers. Si nécessaire, utilisez chmod +x app.py pour rendre le script exécutable dans le dossier original.
+
+    Problèmes liés au cache ou aux fichiers temporaires : Certains scripts Python génèrent des fichiers de cache ou des fichiers temporaires qui peuvent causer des problèmes s'ils ne sont pas régénérés correctement. Assurez-vous qu'il n'y a pas de tels fichiers qui pourraient interférer avec l'exécution du script.
+
+    
+    Dépendances Python : Vérifiez que toutes les dépendances Python requises par app.py sont installées. Si vous utilisez un environnement virtuel, assurez-vous qu'il est activé.
+
+    Tester avec des sorties de débogage : Ajoutez des instructions print au début du script app.py pour confirmer qu'il démarre son exécution. Cela peut vous aider à déterminer si le script commence à s'exécuter mais se bloque ou s'arrête à un certain point.
+
+    
+    Journalisation des erreurs : Modifiez app.py pour qu'il capture et journalise les exceptions. Cela pourrait révéler des problèmes silencieux qui ne sont pas autrement visibles.
+
+    
+    Comparer les environnements Python : Assurez-vous que la version de Python et les bibliothèques installées sont les mêmes dans les deux dossiers. 
+    Vous pouvez utiliser python3 -m pip freeze pour lister les packages installés.
+
+Si aucune de ces solutions ne fonctionne, il serait utile de regarder directement le code de app.py pour voir s'il y a des indications sur pourquoi il pourrait se comporter différemment dans différents dossiers.

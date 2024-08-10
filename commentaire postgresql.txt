@@ -1,0 +1,319 @@
+PostgreSQL Apt Repository
+
+If the version included in your version of Ubuntu is not the one you want, you can use the PostgreSQL Apt Repository. This repository will integrate with your normal systems and patch management, and provide automatic updates for all supported versions of PostgreSQL throughout the support lifetime of PostgreSQL.
+
+The PostgreSQL Apt Repository supports the current versions of Ubuntu:
+
+    noble (24.04, LTS)
+    mantic (23.10, non-LTS)
+    jammy (22.04, LTS)
+    focal (20.04, LTS)
+
+on the following architectures:
+
+    amd64
+    arm64 (LTS releases only)
+    ppc64el (LTS releases only)
+    s390x (LTS releases only)
+
+Automated repository configuration: 
+
+sudo apt install -y postgresql-common
+sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+
+ To manually configure the Apt repository, follow these steps: 
+
+ sudo apt install curl ca-certificates
+sudo install -d /usr/share/postgresql-common/pgdg
+sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
+sudo sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+sudo apt update
+sudo apt -y install postgresql
+
+
+Packages
+
+The repository contains many different packages including third party addons. 
+The most common and important packages are (substitute the version number as required):
+
+postgresql-client-16 	            client libraries and client binaries
+postgresql-16 	                    core database server
+postgresql-doc-16 	                documentation
+libpq-dev 	                        libraries and headers for C language frontend development
+postgresql-server-dev-16 	        libraries and headers for C language backend development
+
+
+
+Conseils : 
+
+1. Vérifier le serveur PostgreSQL
+
+    Assure-toi que PostgreSQL est installé : 
+    Sous Linux, tu peux utiliser une commande comme psql --version dans le terminal.
+    S'assurer que PostgreSQL est en cours d'exécution : Le serveur doit être actif pour pouvoir y accéder.
+Sous Linux, tu peux utiliser une commande comme sudo systemctl status postgresql pour voir si le service est actif.
+
+2. Vérifier les configurations de connexion
+
+    Accès aux fichiers de configuration PostgreSQL
+
+    Localisation des fichiers :
+        Les fichiers de configuration de PostgreSQL (postgresql.conf et pg_hba.conf) sont généralement situés dans le répertoire de données du serveur PostgreSQL. Ce répertoire varie selon l'installation, mais il est souvent quelque part sous /var/lib/postgresql/VERSION/data/ où VERSION est la version de PostgreSQL.
+
+    Accès aux fichiers :
+        Pour accéder à ces fichiers, tu auras besoin de privilèges superutilisateur. 
+        Utilise sudo pour ouvrir un éditeur de texte avec ces fichiers. 
+
+        Par exemple, si tu utilises nano et PostgreSQL 12, la commande serait:
+
+        sudo nano /var/lib/postgresql/12/main/postgresql.conf
+        sudo nano /var/lib/postgresql/12/main/pg_hba.conf
+
+        Remplace 12/main par le chemin approprié selon ta version et configuration.
+
+Vérification du fichier postgresql.conf
+
+    Port de connexion :
+        Dans postgresql.conf, cherche la ligne avec port = 5432. 
+        Assure-toi que le port n'est pas modifié, sauf si tu as spécifiquement besoin d'utiliser un autre port.
+        Si le port est différent et que tu veux le remettre à 5432 ou à un autre port de ton choix, change cette valeur, 
+        enregistre le fichier et redémarre le service PostgreSQL.
+
+    Autres paramètres de connexion :
+        Tu peux également vérifier d'autres paramètres comme listen_addresses. 
+        Cette directive détermine sur quelles adresses IP le serveur PostgreSQL acceptera les connexions. 
+        Par défaut, elle est souvent réglée sur localhost. 
+        Pour accepter les connexions de n'importe quelle adresse, tu peux la régler sur '*'.
+
+Vérification du fichier pg_hba.conf
+
+    Méthodes d'authentification :
+        Ce fichier contrôle qui peut se connecter à quelles bases de données et comment. 
+        Les lignes de ce fichier spécifient : type de connexion, base de données, utilisateur, 
+        adresse IP ou plage d'adresses, et méthode d'authentification.
+        Par exemple, une ligne typique pour permettre à tous les utilisateurs locaux de se connecter
+        à toutes les bases de données serait :
+
+    # TYPE  DATABASE        USER            ADDRESS                 METHOD
+    local   all             all                                     trust
+
+    Pour les connexions depuis localhost en utilisant IPv4 :
+
+    host    all             all             127.0.0.1/32            md5
+
+    Assure-toi que les méthodes d'authentification et les adresses sont appropriées pour tes besoins de sécurité.
+
+Appliquer les modifications :
+
+    Après avoir fait des modifications dans pg_hba.conf, 
+    tu dois redémarrer PostgreSQL pour que les changements prennent effet :
+
+    sudo systemctl restart postgresql
+
+Ces étapes te permettront de contrôler et de configurer les paramètres de connexion de ton serveur PostgreSQL sur Linux, 
+assurant ainsi que les configurations correspondent à tes besoins et respectent les normes de sécurité nécessaires.
+    
+     
+3. Vérifier le pare-feu et les paramètres réseau
+
+    Pare-feu : Assure-toi que ton pare-feu n’est pas configuré pour bloquer le port 5432. Tu devras peut-être ajouter une règle pour permettre le trafic sur ce port.
+    Antivirus ou autres logiciels de sécurité : Parfois, ils peuvent interférer avec les connexions réseau. Essaie temporairement de les désactiver pour voir si cela résout le problème.
+
+4. Redémarrer le service PostgreSQL
+
+    Parfois, simplement redémarrer le service peut résoudre des problèmes de connexion.
+        Sous Linux, tu peux utiliser sudo systemctl restart postgresql.
+
+5. Tester la connexion
+
+    Utiliser la commande psql : Si tu as accès à la ligne de commande de PostgreSQL (psql), essaie de te connecter en utilisant psql -U username -d postgres pour voir si le problème est spécifique à pgAdmin.
+
+6. Rechercher des messages d'erreur
+
+    Regarde dans les journaux de PostgreSQL ou les logs de Windows/Linux pour d'éventuels messages d'erreur qui pourraient te donner plus d'indications sur le problème.
+
+7. Réinstaller PostgreSQL
+
+    Si rien d'autre ne fonctionne, envisage de désinstaller puis de réinstaller PostgreSQL, 
+    en faisant attention à noter les paramètres spécifiques lors de l'installation pour s'assurer 
+    que tout est configuré correctement.
+
+Trouver le chemin vers les fichiers de configuration PostgreSQL
+
+    Trouver le chemin du répertoire de données :
+        PostgreSQL stocke ses configurations dans un répertoire de données souvent appelé "data directory". 
+        Pour trouver ce répertoire, tu peux utiliser la commande suivante dans ton terminal, materile audio Trouver le chemin vers les fichiers de configuration PostgreSQL
+
+    Trouver le chemin du répertoire de données :
+        PostgreSQL stocke ses configurations dans un répertoire de données souvent appelé "data directory". Pour trouver ce répertoire, tu peux utiliser la commande suivante dans ton terminal, en assumant que tu as accès à l'utilisateur PostgreSQL :
+
+        bash
+
+        sudo -u postgres psql -c "SHOW data_directory;"
+
+        Cette commande exécutera PostgreSQL sous l'utilisateur postgres et affichera le répertoire de données actuel.
+
+    Chemin des fichiers de configuration :
+        Une fois que tu connais le répertoire de données, les fichiers postgresql.conf et pg_hba.conf seront typiquement situés directement à l'intérieur de ce répertoire.
+        Par exemple, si le répertoire de données est /var/lib/postgresql/12/main, alors les chemins des fichiers seront :
+            /var/lib/postgresql/12/main/postgresql.conf
+            /var/lib/postgresql/12/main/pg_hba.conf
+
+Écrire dans les fichiers de configuration
+
+    Utiliser un éditeur de texte :
+        Pour modifier les fichiers de configuration, tu peux utiliser un éditeur de texte comme nano ou vim. Assure-toi d'utiliser sudo pour obtenir les permissions nécessaires pour écrire dans ces fichiers. Voici comment tu pourrais ouvrir postgresql.conf avec nano :
+
+        bash
+
+    sudo nano /var/lib/postgresql/12/main/postgresql.conf
+
+    Remplace le chemin par le chemin correct trouvé à l'étape précédente.
+
+Sauvegarder les modifications et redémarrer PostgreSQL :
+
+    Après avoir fait des modifications, sauvegarde les changements en utilisant les commandes de sauvegarde de l'éditeur de texte (par exemple, Ctrl+O puis Enter pour nano).
+    Redémarre le service PostgreSQL pour appliquer les changements :
+
+    bash
+
+        sudo systemctl restart postgresql
+
+Vérifier les modifications
+
+    Pour t'assurer que les modifications ont été correctement appliquées et que PostgreSQL fonctionne comme prévu, tu peux vérifier le statut du service :
+
+    bash
+
+sudo systemctl status postgresql
+
+De plus, tu peux te connecter à PostgreSQL avec psql et vérifier les paramètres modifiés :
+
+bash
+
+    sudo -u postgres psql
+    SHOW config_paramètre;
+
+    Remplace config_paramètre par le nom du paramètre que tu as modifié, par exemple port ou listen_addresses.
+
+Ces étapes te permettront de trouver et de modifier les fichiers de configuration de PostgreSQL sur un système Linux, ainsi que de vérifier que tes modifications ont été appliquées correctement.
+
+        en assumant que tu as accès à l'utilisateur PostgreSQL :
+
+        bash
+
+        sudo -u postgres psql -c "SHOW data_directory;"
+
+        Cette commande exécutera PostgreSQL sous l'utilisateur postgres et affichera le répertoire de données actuel.
+
+    Chemin des fichiers de configuration :
+        Une fois que tu connais le répertoire de données, les fichiers postgresql.conf et pg_hba.conf seront typiquement situés directement à l'intérieur de ce répertoire.
+        Par exemple, si le répertoire de données est /var/lib/postgresql/12/main, alors les chemins des fichiers seront :
+            /var/lib/postgresql/12/main/postgresql.conf
+            /var/lib/postgresql/12/main/pg_hba.conf
+
+Écrire dans les fichiers de configuration
+
+    Utiliser un éditeur de texte :
+        Pour modifier les fichiers de configuration, tu peux utiliser un éditeur de texte comme nano ou vim. 
+        Assure-toi d'utiliser sudo pour obtenir les permissions nécessaires pour écrire dans ces fichiers. 
+
+        Voici comment tu pourrais ouvrir postgresql.conf avec nano :
+
+        bash
+
+    sudo nano /var/lib/postgresql/12/main/postgresql.conf
+
+    Remplace le chemin par le chemin correct trouvé à l'étape précédente.
+
+Sauvegarder les modifications et redémarrer PostgreSQL :
+
+    Après avoir fait des modifications, sauvegarde les changements en utilisant les commandes de sauvegarde de l'éditeur de texte (par exemple, 
+    Ctrl+O puis Enter pour nano).
+
+    Redémarre le service PostgreSQL pour appliquer les changements :
+
+    bash
+
+        sudo systemctl restart postgresql
+
+Vérifier les modifications
+
+    Pour t'assurer que les modifications ont été correctement appliquées et que PostgreSQL fonctionne comme prévu, 
+    tu peux vérifier le statut du service :
+
+    bash
+
+sudo systemctl status postgresql
+
+De plus, tu peux te connecter à PostgreSQL avec psql et vérifier les paramètres modifiés :
+
+bash
+
+    sudo -u postgres psql
+    SHOW config_paramètre;
+
+    Remplace config_paramètre par le nom du paramètre que tu as modifié, par exemple port ou listen_addresses.
+
+Ces étapes te permettront de trouver et de modifier les fichiers de configuration de PostgreSQL sur un système Linux, 
+ainsi que de vérifier que tes modifications ont été appliquées correctement.
+
+
+trouver ces fichiers en utilisant la commande find :
+
+    Recherche avec find :
+        Utilise cette commande pour rechercher les fichiers postgresql.conf et pg_hba.conf dans tout le système de fichiers (cela peut prendre un peu de temps) :
+
+        bash
+
+        sudo find / -name "postgresql.conf"
+        sudo find / -name "pg_hba.conf"
+
+Vérifier une configuration non standard
+
+Si PostgreSQL est exécuté dans un conteneur Docker (comme le suggère le nom de ton répertoire de travail), 
+les fichiers de configuration pourraient se trouver à un emplacement différent, ou gérés différemment :
+
+    Vérifier si PostgreSQL est dans Docker :
+        Si PostgreSQL s'exécute dans un conteneur Docker, 
+        les chemins des fichiers de configuration pourraient ne pas suivre les emplacements standards du système hôte.
+        
+        Tu peux inspecter les conteneurs en cours pour voir si PostgreSQL est exécuté comme tel :
+
+        bash
+
+docker ps
+
+Pour accéder à un conteneur et vérifier les fichiers de configuration, utilise :
+
+bash
+
+        docker exec -it [nom_conteneur] bash
+
+        Une fois dans le conteneur, 
+        tu peux utiliser ls pour lister les fichiers de configuration ou nano pour les ouvrir.
+
+    Considérer des configurations modifiées :
+        Certains déploiements de PostgreSQL, 
+        notamment ceux gérés par des orchestrateurs ou des installations personnalisées, 
+        peuvent avoir des configurations qui placent postgresql.conf et pg_hba.conf dans des emplacements non standards 
+        ou les gèrent via des interfaces de configuration automatisées.
+
+
+Accéder et Modifier les Fichiers de Configuration
+
+Maintenant que nous avons localisé les fichiers, tu peux les modifier selon tes besoins. 
+Pour modifier le fichier de configuration de PostgreSQL pour la version 14, par exemple, 
+tu peux utiliser la commande suivante :
+
+bash
+
+sudo nano /etc/postgresql/14/main/postgresql.conf
+
+Pour la version 16, utilise :
+
+bash
+
+sudo nano /etc/postgresql/16/main/postgresql.conf
+
+

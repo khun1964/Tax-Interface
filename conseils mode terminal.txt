@@ -1,0 +1,225 @@
+1. Ouvrir le Terminal
+
+Commencez par ouvrir votre terminal. Sur macOS, vous pouvez le trouver dans Applications > Utilitaires > Terminal. Sur Linux, il est généralement accessible via un raccourci dans la barre de menus ou le dashboard, souvent représenté par une icône de terminal.
+2. Navigation de Dossier
+
+    Changer de répertoire :
+
+    bash
+
+cd [chemin/vers/dossier]
+
+Utilisez cd pour naviguer entre les dossiers. Pour retourner au répertoire personnel :
+
+bash
+
+cd ~
+
+Pour aller au répertoire racine :
+
+bash
+
+cd /
+
+Pour remonter d'un niveau :
+
+bash
+
+cd ..
+
+Lister les fichiers et dossiers :
+
+bash
+
+ls
+
+Pour voir plus de détails, utilisez :
+
+bash
+
+ls -l
+
+Pour voir les fichiers cachés :
+
+bash
+
+    ls -a
+
+3. Gestion de Fichiers et Dossiers
+
+    Créer un fichier :
+
+    bash
+
+touch [nom_du_fichier]
+
+Créer un dossier :
+
+bash
+
+mkdir [nom_du_dossier]
+
+Copier des fichiers ou dossiers :
+
+bash
+
+cp [source] [destination]
+
+Déplacer ou renommer :
+
+bash
+
+mv [source] [destination]
+
+Supprimer un fichier :
+
+bash
+
+rm [nom_du_fichier]
+
+Supprimer un dossier :
+
+bash
+
+    rm -r [nom_du_dossier]
+
+4. Manipulation de Contenu de Fichier
+
+    Ouvrir un fichier avec un éditeur (nano, vim, etc.) :
+
+    bash
+
+nano [nom_du_fichier]
+
+Afficher le contenu d'un fichier :
+
+bash
+
+cat [nom_du_fichier]
+
+Rechercher dans un fichier :
+
+bash
+
+    grep 'mot-clé' [nom_du_fichier]
+
+5. Information sur le Système et Gestion de Processus
+
+    Voir les processus en cours :
+
+    bash
+
+top
+
+Tuer un processus :
+
+bash
+
+kill [PID]
+
+Vérifier l'espace disque :
+
+bash
+
+df -h
+
+Vérifier la mémoire utilisée :
+
+bash
+
+    free -m
+
+6. Gestion des Permissions
+
+    Changer les permissions :
+
+    bash
+
+chmod [permissions] [fichier]
+
+Changer le propriétaire :
+
+bash
+
+    chown [utilisateur] [fichier]
+
+7. Mise à jour des Paquets (sur Linux)
+
+    Mettre à jour la liste des paquets :
+
+    bash
+
+sudo apt update
+
+Mettre à jour les paquets installés :
+
+bash
+
+    sudo apt upgrade
+
+8. Nettoyage et Maintenance
+
+    Nettoyer les paquets inutilisés (sur Debian, Ubuntu) :
+
+    bash
+
+    sudo apt autoremove
+
+9. Redémarrer ou Arrêter le Système
+
+    Redémarrer :
+
+    bash
+
+sudo reboot
+
+Arrêter :
+
+bash
+
+sudo shutdown now
+
+
+Étape 4: Ouvrir le Fichier HTML dans un Navigateur
+
+Pour ouvrir le fichier HTML dans un navigateur, vous pouvez utiliser une commande qui dépend du navigateur que vous souhaitez utiliser. Voici comment vous pouvez ouvrir le fichier avec différents navigateurs :
+
+    Google Chrome (peut-être différent selon votre système) :
+
+    bash
+
+google-chrome frontsimple_test.html
+
+Firefox :
+
+bash
+
+firefox frontsimple_test.html
+
+Chromium (souvent sur Linux) :
+
+bash
+
+    chromium frontsimple_test.html
+
+Si vous êtes sur macOS et que vous voulez utiliser Safari, la commande serait :-
+
+
+bash
+
+open -a Safari frontsimple_test.html
+
+Autre méthode : Lancer un serveur local
+
+Si le fichier HTML nécessite des ressources chargées localement via HTTP (par exemple, des scripts ou des styles), il est souvent préférable de lancer un serveur local.
+Vous pouvez utiliser http-server si vous l'avez installé :
+
+bash
+
+http-server
+
+Et ensuite accéder à http://localhost:8080/frontsimple_test.html dans votre navigateur.
+
+En suivant ces étapes, 
+vous devriez pouvoir naviguer jusqu'à votre dossier et ouvrir le fichier HTML 
+dans un navigateur via le terminal.

@@ -1,0 +1,138 @@
+Pour atteindre et utiliser le fichier dockerfile situé dans le répertoire actuel pour construire une image Docker avec la commande docker build, suivez les étapes suivantes :
+
+Assurez-vous que vous êtes dans le bon répertoire où se trouve le fichier dockerfile. Si vous êtes déjà dans le répertoire ~/Projet support docker interface impôt, vous êtes au bon endroit. Sinon, utilisez la commande suivante pour y accéder :
+
+bash
+
+cd ~/Projet support docker interface impôt
+
+Avant de construire l'image Docker, 
+vérifiez que le fichier dockerfile est correctement nommé. Docker recherche un fichier nommé Dockerfile (avec un 'D' majuscule et sans extension) par défaut. Si votre fichier s'appelle dockerfile, vous devrez spécifier le nom du fichier lors de la construction. Sinon, vous pouvez le renommer :
+
+
+bash
+
+mv dockerfile Dockerfile
+
+Construisez l'image Docker en utilisant la commande suivante. 
+Remplacez <tag> par le tag que vous souhaitez donner à votre image, par exemple monapp:v1.
+
+
+bash
+
+docker build -t <tag> .
+
+
+Si votre fichier se nomme toujours dockerfile (avec un 'd' minuscule), utilisez l'option -f pour spécifier le nom du fichier :
+
+
+bash
+
+docker build -f dockerfile -t <tag> .
+
+Cela démarrera le processus de construction de l'image Docker basée sur les instructions spécifiées dans votre fichier Dockerfile. 
+Assurez-vous que Docker est installé et que le service Docker est en cours d'exécution sur votre machine avant de lancer cette commande.
+
+
+our ajouter ce contenu à votre Dockerfile, 
+vous pouvez ouvrir le fichier avec un éditeur de texte comme nano ou vi en utilisant une des commandes que j'ai mentionnées précédemment, 
+puis écrire ou coller le contenu souhaité. 
+
+Par exemple :
+
+bash
+
+nano Dockerfile
+
+ou
+
+vi Dockerfile
+
+
+Après avoir ouvert le fichier dans l'éditeur, 
+
+vous pouvez y écrire les instructions nécessaires, puis enregistrer et quitter l'éditeur.
+
+
+La commande docker build -t interfaceImpôt:v1 . 
+est utilisée pour construire une image Docker à partir d'un Dockerfile. 
+Voici une explication détaillée de chaque segment de la commande :
+
+    docker build :
+        docker: Il s'agit de la commande de base pour interagir avec Docker.
+        build: Cette sous-commande de Docker est utilisée pour construire des images Docker à partir d'un Dockerfile.
+
+    -t interfaceImpôt:v1 :
+        -t : L'option -t permet de taguer l'image avec un nom et éventuellement un tag (séparé par deux points). 
+        Cela aide à identifier l'image avec un nom choisi plutôt qu'un ID généré automatiquement.
+
+        interfaceImpôt : C'est le nom que vous donnez à votre image. 
+        Vous pouvez utiliser ce nom pour référencer l'image plus tard, par exemple lorsque vous démarrez un conteneur basé sur cette image.
+
+        v1 : C'est le tag de l'image. Les tags permettent de gérer différentes versions de la même image. Par exemple, vous pourriez avoir v2, v3, etc., pour différentes versions de votre application.
+
+    . :
+        Le point à la fin de la commande indique à Docker où trouver le Dockerfile et les fichiers associés nécessaires pour construire l'image. 
+        Le . représente le répertoire courant, signifiant que Docker utilisera le Dockerfile situé dans le même répertoire où vous exécutez la commande.
+        Ce chemin peut être modifié pour pointer vers un autre répertoire contenant le Dockerfile et les fichiers nécessaires 
+        si vous n'êtes pas dans le répertoire du Dockerfile.
+
+En résumé, cette commande demande à Docker de construire une image, 
+en la taguant avec le nom interfaceImpôt et le tag v1, 
+en utilisant le Dockerfile et tout autre fichier nécessaire qui se trouve dans le répertoire courant. 
+Cette image construite peut ensuite être utilisée pour démarrer des conteneurs Docker basés sur cette configuration.
+
+
+docker build -t interfaceImpôt:v1  // échec du build car majuscule / caractére spécial / absence du  .  à la fin
+
+Il semble que l'erreur que vous rencontrez provienne du format du tag que vous avez utilisé dans la commande docker build. 
+Le nom de l'image Docker, interfaceImpôt:v1, contient un caractère spécial non standard (ô), qui n'est pas autorisé dans les tags Docker.
+
+Les noms de tags dans Docker doivent suivre certaines règles:
+
+    Ils doivent être en minuscules.
+    Ils peuvent seulement contenir des caractères alphanumériques, des points, des traits de soulignement, et des tirets.
+
+Pour résoudre ce problème, vous devriez remplacer tout caractère spécial par un caractère standard ou simplement le supprimer. Voici comment vous pourriez reformuler votre commande :
+
+bash
+
+docker build -t interfaceimpot:v1 .
+
+Cette commande utilise interfaceimpot:v1 comme tag, qui est conforme aux exigences de Docker pour les formats de nommage. 
+En exécutant cette commande dans le répertoire contenant votre Dockerfile, 
+Docker devrait pouvoir construire l'image sans problèmes de format de nommage.
+
+
+Pour voir les conteneurs Docker actifs sur votre machine, 
+vous pouvez utiliser la commande docker ps. 
+
+Voici comment chaque option fonctionne :
+
+    docker ps : Cette commande affiche une liste de tous les conteneurs Docker actifs (en cours d'exécution) sur votre machine. 
+    Vous verrez des informations telles que l'ID du conteneur, 
+    l'image à partir de laquelle le conteneur a été créé, 
+    le statut de démarrage, 
+    les ports utilisés, 
+    et le nom donné au conteneur.
+
+
+    docker ps -a : Si vous souhaitez voir tous les conteneurs Docker sur votre machine,
+     y compris ceux qui ne sont pas actuellement en cours d'exécution, 
+     vous pouvez ajouter l'option -a (pour "all"). 
+     Cette commande vous montrera tous les conteneurs, actifs ou arrêtés.
+
+Ces commandes vous aideront à surveiller et à gérer les conteneurs sur votre système. 
+
+Voici à quoi ressemblerait l'utilisation de ces commandes dans votre terminal :
+
+
+docker ps  # Liste tous les conteneurs actifs
+
+docker ps -a  # Liste tous les conteneurs, actifs ou non
+
+haque entrée dans le résultat de ces commandes vous donne un aperçu de l'état de vos conteneurs, 
+vous aidant à gérer votre environnement Docker de manière plus efficace.
+
+
+
