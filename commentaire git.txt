@@ -1,0 +1,65 @@
+Pour configurer votre projet local Projet support docker interface impôt et le synchroniser 
+avec le dépôt GitHub existant Tax-Interface qui contient déjà certains fichiers
+comme .gitignore, LICENSE, et README.md.
+
+Étapes pour lier et synchroniser votre projet local avec votre dépôt GitHub
+
+    Ouvrez Visual Studio Code et accédez au terminal intégré.
+
+    Naviguez vers le dossier de votre projet. 
+    Si vous n'avez pas encore de dossier, créez-le et naviguez dedans.
+
+    bash
+
+mkdir "Projet support docker interface impôt"
+cd "Projet support docker interface impôt"
+
+Initialisez un dépôt Git local :
+
+bash
+
+git init
+
+Ajoutez le dépôt GitHub comme un remote :
+
+bash
+
+git remote add origin https://github.com/votre_nom_utilisateur/Tax-Interface.git
+
+Récupérez les fichiers existants du dépôt GitHub :
+
+Avant d'ajouter vos propres fichiers, il est important de synchroniser les changements qui sont déjà sur GitHub, notamment pour les fichiers .gitignore, LICENSE, et README.md.
+
+bash
+
+git fetch
+git pull origin main
+
+Si votre branche principale est nommée différemment, remplacez main par le nom correct, tel que master.
+
+Ajoutez vos fichiers locaux :
+
+Placez tous les fichiers que vous souhaitez dans le dossier Projet support docker interface impôt, puis ajoutez-les à votre dépôt Git.
+
+bash
+
+git add .
+
+Faites un commit de vos fichiers :
+
+bash
+
+git commit -m "Ajout des fichiers du projet Docker Interface Impôt"
+
+Poussez vos modifications sur GitHub :
+
+Comme il peut y avoir des conflits avec les fichiers existants
+ (surtout si vous avez modifié .gitignore, LICENSE, ou README.md), 
+ vous devrez peut-être résoudre ces conflits avant de pouvoir pousser avec succès.
+
+bash
+
+    git push origin main
+
+En suivant ces étapes, votre projet local sera bien configuré et synchronisé avec votre dépôt GitHub existant Tax-Interface. 
+Cette méthode assure que tous les fichiers nécessaires sont inclus et que votre historique de versions est correctement géré.
