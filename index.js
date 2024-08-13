@@ -91,7 +91,19 @@ function validerNom() {
     }
 }
 
+function validerPrenom() {
+    var inputAdresse = document.getElementById('Prenom');
+    var small = document.querySelector('.form-control small');
 
+    if (inputAdresse.value === "") {
+        // Affiche le message d'erreur si l'adresse n'est pas remplie
+        small.style.visibility = 'visible';
+        small.textContent = 'Veuillez entrer un Prenom valide.';
+    } else {
+        // Cache le message d'erreur si l'adresse est remplie
+        small.style.visibility = 'hidden';
+    }
+}
 
 
 function validerAdresse() {

@@ -1,0 +1,27 @@
+form {
+    margin: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, select {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+#resultatImpot {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+.resultat-cache {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
