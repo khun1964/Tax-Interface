@@ -1,0 +1,269 @@
+Commandes générales Docker
+
+    Afficher la version de Docker :
+
+    bash
+
+docker --version
+
+
+Afficher les informations système Docker :
+
+bash
+
+docker info
+
+
+Afficher l'aide Docker :
+
+bash
+
+    docker --help
+
+
+
+
+
+Gestion des conteneurs
+
+    Lister les conteneurs en cours d'exécution :
+
+    bash
+
+docker ps
+
+
+Lister tous les conteneurs (y compris les arrêtés) :
+
+bash
+
+docker ps -a
+
+
+Démarrer un conteneur arrêté :
+
+bash
+
+docker start <container_id>
+
+
+Arrêter un conteneur en cours d'exécution :
+
+bash
+
+docker stop <container_id>
+
+
+Redémarrer un conteneur :
+
+bash
+
+docker restart <container_id>
+
+
+Supprimer un conteneur arrêté :
+
+bash
+
+docker rm <container_id>
+
+
+Supprimer tous les conteneurs arrêtés :
+
+bash
+
+docker container prune
+
+
+Afficher les logs d'un conteneur :
+
+bash
+
+docker logs <container_id>
+
+
+Accéder à un conteneur en cours d'exécution (via bash) :
+
+bash
+
+    docker exec -it <container_id> /bin/bash
+
+
+
+
+Gestion des images
+
+    Lister les images Docker :
+
+    bash
+
+docker images
+
+
+Télécharger une image depuis Docker Hub :
+
+bash
+
+docker pull <image_name>
+
+
+Construire une image à partir d'un Dockerfile :
+
+bash
+
+docker build -t <image_name> .
+
+
+Supprimer une image Docker :
+
+bash
+
+docker rmi <image_id>
+
+
+Supprimer toutes les images non utilisées :
+
+bash
+
+docker image prune
+
+
+Créer une nouvelle image à partir d'un conteneur en cours d'exécution :
+
+bash
+
+    docker commit <container_id> <new_image_name>
+
+
+
+
+Gestion des volumes
+
+    Lister les volumes Docker :
+
+    bash
+
+docker volume ls
+
+
+Créer un volume :
+
+bash
+
+docker volume create <volume_name>
+
+
+Supprimer un volume :
+
+bash
+
+docker volume rm <volume_name>
+
+
+Supprimer tous les volumes non utilisés :
+
+bash
+
+    docker volume prune
+
+
+
+
+Gestion des réseaux
+
+    Lister les réseaux Docker :
+
+    bash
+
+docker network ls
+
+
+Créer un réseau Docker :
+
+bash
+
+docker network create <network_name>
+
+
+Connecter un conteneur à un réseau :
+
+bash
+
+docker network connect <network_name> <container_id>
+
+
+Déconnecter un conteneur d'un réseau :
+
+bash
+
+docker network disconnect <network_name> <container_id>
+
+
+Supprimer un réseau :
+
+bash
+
+docker network rm <network_name>
+
+
+Supprimer tous les réseaux non utilisés :
+
+bash
+
+    docker network prune
+
+
+
+
+
+Utilisation de Docker Compose
+
+    Lancer un service avec Docker Compose :
+
+    bash
+
+docker-compose up
+
+
+Lancer un service en arrière-plan (détaché) :
+
+bash
+
+docker-compose up -d
+
+
+Arrêter les services Docker Compose :
+
+bash
+
+docker-compose down
+
+
+Recréer les conteneurs Docker Compose (après modification des fichiers) :
+
+bash
+
+docker-compose up --build
+
+
+Vérifier l'état des services Docker Compose :
+
+bash
+
+docker-compose ps
+
+
+Afficher les logs des services Docker Compose :
+
+bash
+
+    docker-compose logs
+
+Nettoyage
+
+
+    Supprimer tous les conteneurs arrêtés, images, volumes, et réseaux inutilisés :
+
+    bash
+
+docker system prune -a

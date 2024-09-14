@@ -1,0 +1,193 @@
+1. Installer PHP sur votre système :
+
+    Windows :
+        Téléchargez le package PHP depuis le site officiel PHP Downloads.
+        Extrayez les fichiers dans un dossier, par exemple C:\php.
+        Ajoutez le chemin de ce dossier à votre variable d'environnement PATH :
+            Ouvrez le panneau de configuration.
+            Accédez à Système > Paramètres système avancés > 
+            Variables d'environnement.
+
+            Trouvez la variable PATH dans la section "Variables système" et 
+            cliquez sur "Modifier".
+
+            Ajoutez le chemin C:\php à la liste des chemins.
+
+    macOS :
+        Ouvrez le terminal.
+        Installez Homebrew si ce n'est pas déjà fait :
+
+        bash
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Installez PHP avec Homebrew :
+
+bash
+
+brew install php
+
+Après l'installation, vérifiez que PHP est bien installé :
+
+bash
+
+    php -v
+
+Linux :
+
+    Ouvrez le terminal.
+    Installez PHP en utilisant le gestionnaire de paquets de votre distribution :
+        Pour Ubuntu/Debian :
+
+        bash
+
+sudo apt update
+sudo apt install php
+
+Pour Fedora/RHEL :
+
+bash
+
+sudo dnf install php
+
+Configurer PHP dans Visual Studio Code :
+
+    Installer l'extension PHP Intelephense :
+        Ouvrez Visual Studio Code.
+        Allez dans l'onglet des extensions (icône en forme de carré ou avec Ctrl+Shift+X).
+        Recherchez "PHP Intelephense" et installez-le. 
+        Cette extension offre de l'autocomplétion, des suggestions de code, 
+        et bien plus encore pour PHP.
+
+    Configurer le serveur intégré (si nécessaire) :
+        Dans Visual Studio Code, ouvrez le terminal intégré
+         avec Ctrl+`` (ou View > Terminal`).
+        Vous pouvez démarrer un serveur PHP intégré pour tester votre code en local :
+
+        bash
+
+php -S localhost:8000
+
+Accédez à http://localhost:8000 dans votre navigateur pour voir votre projet en 
+cours de développement.
+
+Pour installer PHP et configurer un projet dans Visual Studio Code, suivez ces étapes :
+1. Installer PHP sur votre système :
+
+    Windows :
+        Téléchargez le package PHP depuis le site officiel PHP Downloads.
+        Extrayez les fichiers dans un dossier, par exemple C:\php.
+        Ajoutez le chemin de ce dossier à votre variable d'environnement PATH :
+            Ouvrez le panneau de configuration.
+            Accédez à Système > Paramètres système avancés > Variables d'environnement.
+            Trouvez la variable PATH dans la section "Variables système" 
+            et cliquez sur "Modifier".
+
+            Ajoutez le chemin C:\php à la liste des chemins.
+
+    macOS :
+        Ouvrez le terminal.
+        Installez Homebrew si ce n'est pas déjà fait :
+
+        bash
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Installez PHP avec Homebrew :
+
+bash
+
+brew install php
+
+Après l'installation, vérifiez que PHP est bien installé :
+
+bash
+
+    php -v
+
+Linux :
+
+    Ouvrez le terminal.
+    Installez PHP en utilisant le gestionnaire de paquets de votre distribution :
+        Pour Ubuntu/Debian :
+
+        bash
+
+sudo apt update
+sudo apt install php
+
+Pour Fedora/RHEL :
+
+bash
+
+            sudo dnf install php
+
+2. Installer Visual Studio Code :
+
+    Téléchargez et installez Visual Studio Code depuis le site officiel.
+
+3. Configurer PHP dans Visual Studio Code :
+
+    Installer l'extension PHP Intelephense :
+        Ouvrez Visual Studio Code.
+        Allez dans l'onglet des extensions (icône en forme de carré ou avec Ctrl+Shift+X).
+        Recherchez "PHP Intelephense" et installez-le. 
+        Cette extension offre de l'autocomplétion, des suggestions de code, 
+        et bien plus encore pour PHP.
+
+    Configurer le serveur intégré (si nécessaire) :
+        Dans Visual Studio Code, ouvrez le terminal intégré avec Ctrl+`` (ou View > Terminal`).
+        Vous pouvez démarrer un serveur PHP intégré pour tester votre code en local :
+
+        bash
+
+        php -S localhost:8000
+
+        Accédez à http://localhost:8000 dans votre navigateur pour voir votre
+         projet en cours de développement.
+
+4. Créer un nouveau projet PHP :
+
+    Démarrer un nouveau projet :
+        Créez un nouveau dossier pour votre projet PHP où vous le souhaitez sur
+        votre système.
+        Ouvrez Visual Studio Code et sélectionnez File > Open Folder pour ouvrir ce dossier.
+        Créez un fichier index.php (ou tout autre fichier .php) et commencez à écrire votre code PHP.
+    Configurer les paramètres du projet (facultatif) :
+        Vous pouvez créer un fichier .vscode/settings.json dans votre dossier 
+        de projet pour configurer des options spécifiques, 
+        comme le chemin de l'exécutable PHP si nécessaire.
+
+5. Tester votre code :
+
+    Après avoir écrit votre code PHP, vous pouvez l'exécuter directement depuis le terminal de VS Code :
+
+    bash
+
+    php index.php
+
+    Vous pouvez également utiliser le serveur intégré, comme mentionné plus tôt, pour voir les résultats dans un navigateur.
+
+6. Déboguer PHP dans Visual Studio Code (optionnel) :
+
+    Installez l'extension "PHP Debug" pour Visual Studio Code si vous souhaitez utiliser le débogueur.
+    Configurez un fichier launch.json pour définir les paramètres de débogage.
+
+Ces étapes vous permettront d'installer PHP et de configurer un environnement de 
+développement PHP fonctionnel dans Visual Studio Code.
+
+
+EXEMPLE: Qui est utilisateur deux fonctions.
+
+1. 
+<?php
+$username = get_current_user(); // Correction de la faute de frappe
+echo "Utilisateur actuel : $username\n"; 
+?>
+
+
+2. 
+<?php
+$username = exec('whoami');
+echo "Utilisateur actuel : $username\n";
+?>

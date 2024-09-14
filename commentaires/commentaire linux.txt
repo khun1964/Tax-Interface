@@ -1,0 +1,61 @@
+Installation de dconf Editor pour Modifier les Paramètres:
+
+    Installez dconf-editor pour explorer et modifier les clés GSettings manuellement 
+    si nécessaire :
+
+    bash
+
+    sudo apt install dconf-editor
+
+    Ouvrez dconf-editor et naviguez jusqu'à org.gnome.desktop.background. 
+    Vérifiez les clés disponibles et ajustez-les selon vos besoins.
+
+Création d'un schéma personnalisé (approche avancée):
+
+    Si vous êtes à l'aise avec la manipulation des schémas GSettings, 
+    vous pouvez créer un schéma personnalisé ou modifier le schéma existant pour inclure la clé manquante. 
+    Cela nécessite une compréhension approfondie de GSettings et n'est recommandé que pour les utilisateurs avancés.
+
+Rapporter le problème:
+
+    Si vous pensez que c'est un bug, vous pouvez le signaler aux développeurs de Nitrogen 
+    pour qu'ils puissent ajuster l'application aux dernières configurations de GNOME.
+
+Retourner à une version antérieure de GNOME ou utiliser une session Xorg:
+
+    Si ce problème perturbe considérablement votre flux de travail, 
+    envisagez de revenir à une version antérieure de GNOME où Nitrogen fonctionnait bien, 
+    ou essayez de lancer votre session sous Xorg si vous êtes actuellement sous Wayland.
+
+
+Comment utiliser dconf-editor
+
+    Lancer dconf-editor :
+        Vous pouvez ouvrir dconf-editor en le tapant dans le terminal ou en le cherchant 
+        dans le menu des applications.
+
+    Naviguer dans les paramètres :
+        Une fois ouvert, vous verrez une structure arborescente des différents schémas et 
+        clés disponibles.
+        Naviguez vers le schéma qui vous intéresse. 
+        Pour le problème spécifique avec Nitrogen, 
+        vous voudriez explorer org.gnome.desktop.background ou des schémas similaires.
+        Vérifiez si vous pouvez trouver la clé draw-background ou tout paramètre pertinent 
+        qui pourrait être lié à votre problème.
+
+    Modifier les valeurs :
+        Si vous trouvez des paramètres qui semblent être liés à votre problème, 
+        vous pouvez tenter de les modifier pour voir si cela résout l'issue. 
+        Soyez prudent en modifiant les valeurs, 
+        car des modifications incorrectes peuvent affecter le comportement de votre système.
+
+    Recherche de paramètres supplémentaires :
+        Utilisez la barre de recherche en haut de dconf-editor pour chercher 
+        des termes clés qui pourraient être reliés à votre problème si vous ne savez pas
+        où exactement regarder.
+
+Prudence
+
+Manipuler dconf-editor nécessite une certaine prudence. 
+C'est un outil puissant qui peut changer des aspects fondamentaux de votre système. 
+Assurez-vous de ne modifier que ce que vous comprenez.    

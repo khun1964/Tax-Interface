@@ -1,0 +1,60 @@
+Ignorer le répertoire mysql_data/ dans Git
+
+Comme ces fichiers semblent être des données de MySQL qui ne devraient probablement pas être versionnées dans Git,
+vous pouvez les exclure en ajoutant une règle dans un fichier .gitignore. 
+Cela permettra à Git d'ignorer ces fichiers et de ne pas essayer de les ajouter.
+
+Étapes :
+
+    Créer ou modifier un fichier .gitignore à la racine de votre projet :
+
+        Si vous avez déjà un fichier .gitignore, ouvrez-le.
+
+        Sinon, créez-en un avec la commande suivante :
+
+        bash
+
+    touch .gitignore
+
+Ajouter le répertoire mysql_data/ au .gitignore : Ajoutez la ligne suivante dans le fichier .gitignore pour que
+Git ignore tout le répertoire mysql_data/ :
+
+bash
+
+mysql_data/
+
+Enregistrer et fermer le fichier .gitignore.
+
+Ajouter et valider le fichier .gitignore :
+
+bash
+
+    git add .gitignore
+    git commit -m "Ajout de mysql_data dans .gitignore"
+
+2. Effectuer l'ajout et le push des autres fichiers
+
+Après avoir ajouté la règle dans le .gitignore, vous pouvez réessayer d'ajouter les fichiers restants 
+et pousser les changements vers votre dépôt GitHub :
+
+bash
+
+git add .
+git commit -m "Ajout des fichiers du projet"
+git push origin main
+
+3. Changement de permissions (optionnel)
+
+Si vous avez vraiment besoin d'inclure des fichiers spécifiques dans mysql_data/, 
+vous pouvez changer les permissions de ces fichiers et répertoires pour donner les droits d'accès 
+à votre utilisateur. Voici comment le faire :
+
+bash
+
+sudo chmod -R 755 mysql_data/
+
+Cela donnera des permissions de lecture et d'exécution aux utilisateurs sur les répertoires 
+et les fichiers dans mysql_data/.
+
+Cependant, il est généralement conseillé de ne pas inclure les données de base de données 
+dans le contrôle de version, donc la solution avec .gitignore est probablement la meilleure option dans ce cas.

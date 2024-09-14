@@ -1,0 +1,134 @@
+Pour vérifier la version d'Ubuntu que vous utilisez, 
+vous pouvez utiliser plusieurs méthodes depuis la ligne de commande. 
+Voici deux des méthodes les plus courantes :
+
+1. Utiliser la commande lsb_release :
+
+Ouvrez un terminal et tapez la commande suivante :
+
+bash
+
+lsb_release -a
+
+Cela affichera des informations sur la distribution, y compris la version d'Ubuntu.
+2. Vérifier le fichier /etc/os-release :
+
+Vous pouvez également consulter le fichier os-release avec la commande suivante :
+
+bash
+
+cat /etc/os-release
+
+Cela affichera des détails sur le système d'exploitation, y compris la version d'Ubuntu.
+3. Vérifier le fichier /etc/issue :
+
+Une autre méthode consiste à lire le contenu du fichier /etc/issue :
+
+bash
+
+cat /etc/issue
+
+Ce fichier contient généralement une ligne indiquant la version d'Ubuntu installée.
+
+Mysql ou MariaDB:
+
+Installer le client MySQL :
+
+bash
+
+sudo apt install mysql-client-core-8.0
+
+Cela installera le client MySQL version 8.0.
+
+Installer le client MariaDB :
+
+bash
+
+sudo apt install mariadb-client-core-10.6
+
+MariaDB est un fork de MySQL et son client est compatible avec les serveurs MySQL. 
+Cela installera le client MariaDB version 10.6.
+
+Choix MariaDB car plus tard création d'une bdd alimenté via python.
+
+Pour Python :
+
+1. Installer le module nécessaire
+
+Vous devez installer un module Python compatible avec MariaDB. Vous pouvez utiliser soit mysql-connector-python ou PyMySQL. Voici comment les installer :
+
+    Installer mysql-connector-python :
+
+    bash
+
+pip install mysql-connector-python
+
+Installer PyMySQL :
+
+bash
+
+    pip install pymysql
+
+2. Connexion à la base de données MariaDB
+
+Voici un exemple de code pour se connecter à une base de données MariaDB en utilisant mysql-connector-python :
+
+python
+
+import mysql.connector
+
+# Connexion à la base de données
+conn = mysql.connector.connect(
+    host="localhost",
+    user="votre_utilisateur",
+    password="votre_mot_de_passe",
+    database="nom_de_votre_base_de_donnees"
+)
+
+cursor = conn.cursor()
+
+# Exemple de requête
+cursor.execute("SELECT * FROM votre_table")
+
+# Récupérer les résultats
+resultats = cursor.fetchall()
+
+for row in resultats:
+    print(row)
+
+# Fermer la connexion
+conn.close()
+
+Et voici un exemple similaire avec PyMySQL :
+
+python
+
+import pymysql
+
+# Connexion à la base de données
+conn = pymysql.connect(
+    host="localhost",
+    user="votre_utilisateur",
+    password="votre_mot_de_passe",
+    database="nom_de_votre_base_de_donnees"
+)
+
+cursor = conn.cursor()
+
+# Exemple de requête
+cursor.execute("SELECT * FROM votre_table")
+
+# Récupérer les résultats
+resultats = cursor.fetchall()
+
+for row in resultats:
+    print(row)
+
+# Fermer la connexion
+conn.close()
+
+3. Exécuter des requêtes
+
+Une fois connecté, vous pouvez exécuter des requêtes SQL, 
+récupérer les résultats, et manipuler les données comme vous le feriez avec
+ toute autre base de données.

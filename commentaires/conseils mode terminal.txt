@@ -1,3 +1,5 @@
+Navigation dans les fichiers
+
 1. Ouvrir le Terminal
 
 Commencez par ouvrir votre terminal. Sur macOS, vous pouvez le trouver dans Applications > Utilitaires > Terminal. Sur Linux, il est généralement accessible via un raccourci dans la barre de menus ou le dashboard, souvent représenté par une icône de terminal.
@@ -179,8 +181,26 @@ bash
 
 sudo shutdown now
 
+10. gestion des archives
 
-Étape 4: Ouvrir le Fichier HTML dans un Navigateur
+tar : Manipule les fichiers tarball (archives .tar).
+
+    tar -cvf archive.tar dossier/ : Crée une archive tar du dossier.
+    tar -xvf archive.tar : Extrait une archive tar.
+
+bash
+
+tar -cvf archive.tar mon_dossier/
+
+zip et unzip : Compresse et décompresse les fichiers .zip.
+
+bash
+
+zip -r archive.zip dossier/
+unzip archive.zip
+
+
+11. Ouvrir le Fichier HTML dans un Navigateur
 
 Pour ouvrir le fichier HTML dans un navigateur, vous pouvez utiliser une commande qui dépend du navigateur que vous souhaitez utiliser. Voici comment vous pouvez ouvrir le fichier avec différents navigateurs :
 
@@ -223,3 +243,80 @@ Et ensuite accéder à http://localhost:8080/frontsimple_test.html dans votre na
 En suivant ces étapes, 
 vous devriez pouvoir naviguer jusqu'à votre dossier et ouvrir le fichier HTML 
 dans un navigateur via le terminal.
+
+
+12. Questions de base:
+
+en mode terminal et souhaitez connaître le nom de l'utilisateur courant (celui qui exécute les commandes dans le terminal), vous pouvez utiliser la commande suivante :
+
+bash
+
+whoami
+
+Cette commande affichera le nom d'utilisateur actuel. 
+C'est l'utilisateur sous lequel toutes les commandes sont exécutées dans cette session 
+de terminal.
+
+Exemple d'utilisation :
+
+    Ouvrez le terminal.
+    Tapez la commande :
+
+    bash
+
+whoami
+
+Le terminal affichera quelque chose comme :
+
+bash
+
+username
+
+Où username est votre nom d'utilisateur.
+
+13. Tellement basqiue : Quitter une session Terminale et ou une commande en cours!
+
+Pour quitter une session de serveur PHP en cours d'exécution dans le terminal 
+(comme celle démarrée avec php -S localhost:8000), 
+vous pouvez utiliser l'une des méthodes suivantes :
+
+1. Interruption avec Ctrl+C :
+
+    La manière la plus courante de quitter un serveur PHP en cours d'exécution 
+    est d'utiliser la combinaison de touches Ctrl+C. 
+    Cela envoie un signal d'interruption au processus, 
+    qui termine immédiatement le serveur.
+    
+    Comment faire :
+        Dans la fenêtre de terminal où le serveur PHP est en cours d'exécution, 
+        appuyez simplement sur Ctrl et C en même temps.
+
+2. Fermer la fenêtre du terminal :
+
+    Si vous fermez directement la fenêtre du terminal où le serveur est en cours
+    d'exécution, cela terminera également le processus du serveur PHP.
+
+3. Arrêter avec kill (en cas de besoin) :
+
+    Si, pour une raison quelconque, Ctrl+C ne fonctionne pas, 
+    vous pouvez trouver le numéro de processus (PID) du serveur PHP et l'arrêter manuellement avec la commande kill.
+    
+    Étapes :
+        Trouvez le PID du serveur en utilisant ps aux | grep php 
+        pour lister les processus PHP en cours.
+        
+        Utilisez la commande kill suivie du PID pour arrêter le processus :
+
+        bash
+
+        kill <PID>
+
+Exemple :
+
+bash
+
+benoit@benoit-VivoBook-ASUSLaptop-X570ZD-X570ZD:~/Projet support docker interface impôt$ ps aux | grep php
+benoit   12345  0.0  0.0  123456  1234 ?        S    10:00   0:00 php -S localhost:8000
+benoit@benoit-VivoBook-ASUSLaptop-X570ZD-X570ZD:~/Projet support docker interface impôt$ kill 12345
+
+Dans la plupart des cas, Ctrl+C suffira pour quitter proprement le serveur PHP.

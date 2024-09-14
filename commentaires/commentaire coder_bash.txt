@@ -1,0 +1,45 @@
+1. Créer un fichier Bash :
+
+    Nommez votre fichier avec l'extension .sh. Par exemple, mon_script.sh.
+
+2. Écrire un script Bash simple :
+
+    Voici un exemple de contenu pour un script Bash qui affiche le nom de l'utilisateur actuel :
+
+bash
+
+#!/bin/bash
+username=$(whoami)
+echo "Utilisateur actuel : $username"
+
+3. Enregistrer le script :
+
+    Enregistrez ce code dans un fichier nommé mon_script.sh.
+
+4. Rendre le script exécutable :
+
+    Pour pouvoir exécuter votre script, vous devez lui donner les permissions d'exécution. Utilisez la commande suivante dans le terminal :
+
+bash
+
+chmod +x mon_script.sh
+
+5. Exécuter le script :
+
+    Pour exécuter votre script, utilisez la commande suivante :
+
+bash
+
+./mon_script.sh
+
+Explication :
+
+    .sh : L'extension .sh est conventionnellement utilisée pour indiquer qu'il 
+    s'agit d'un script shell, bien que ce ne soit pas strictement nécessaire. 
+    Ce n'est qu'une convention pour indiquer qu'un fichier est un script shell.
+
+    #!/bin/bash : La première ligne #!/bin/bash est un shebang. 
+    lle indique au système que ce fichier doit être exécuté avec 
+    l'interpréteur Bash.
+
+    

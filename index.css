@@ -10,16 +10,24 @@
 
 /* Style général */
 header {
-    background-color:white;
-    width:max-content;
-    padding: 10px;
+    background-color:rgb(191, 8, 8);
+    width:100%;
+    padding: 50px;
     margin:auto;
-    height: 100px;
-    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.2), 0 6.7px 5.3px rgba(0, 0, 0, 0.2), 0 12.5px 10px rgba(0, 0, 0, 0.2), 0 22.3px 17.9px rgba(0, 0, 0, 0.2), 0 41.8px 33.4px rgba(0, 0, 0, 0.2), 0 100px 80px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.2), 
+                0 6.7px 5.3px rgba(0, 0, 0, 0.2), 
+                0 12.5px 10px rgba(0, 0, 0, 0.2), 
+                0 22.3px 17.9px rgba(0, 0, 0, 0.2), 
+                0 41.8px 33.4px rgba(0, 0, 0, 0.2), 
+                0 100px 80px rgba(0, 0, 0, 0.2);
     margin-top: 30px;
+    display: flex; /* Utiliser Flexbox */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }      
 
-.container .titrePage {
+.titrePage {
     color:black;
     font-size: 20px;
     font-weight: bold;

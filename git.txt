@@ -153,3 +153,48 @@ Assurez-vous que chaque fichier est correctement configuré et contient les info
 pour les autres développeurs ou pour vous-même dans le futur. Pour des fichiers comme .gitignore, 
 vous pouvez trouver de nombreux exemples et templates spécifiques à différents langages et 
 environnements de développement sur Internet, qui peuvent vous aider à démarrer avec une bonne base.
+
+
+Pour regrouper tous les fichiers modifiés, nouveaux fichiers, et fichiers non suivis afin de les ajouter au même commit, vous pouvez suivre ces étapes :
+
+    Ajouter tous les fichiers modifiés et non suivis à l'index :
+
+    Utilisez la commande suivante pour ajouter tous les fichiers modifiés et non suivis au même commit :
+
+    bash
+
+git add -A
+
+Cette commande ajoute tous les fichiers dans votre répertoire de travail à l'index, 
+y compris les nouveaux fichiers non suivis, les fichiers modifiés, et les fichiers supprimés.
+
+Vérifier le statut :
+
+Après avoir ajouté tous les fichiers, il est recommandé de vérifier le statut pour s'assurer que tout est bien prêt pour le commit :
+
+bash
+
+git status
+
+Vous devriez voir tous les fichiers (ceux qui étaient modifiés et non suivis) dans la section "Modifications qui seront validées".
+
+Faire le commit :
+
+Si tout est correct, vous pouvez alors créer un commit avec un message descriptif :
+
+bash
+
+    git commit -m "Ajout des nouveaux fichiers et des modifications existantes"
+
+Résumé des commandes :
+
+bash
+
+git add -A
+git status
+git commit -m "Ajout des nouveaux fichiers et des modifications existantes"
+
+Cela regroupera tous les fichiers modifiés et nouveaux dans un seul commit.
+
+
+puis le fameux : git push

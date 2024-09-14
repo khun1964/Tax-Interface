@@ -1,0 +1,279 @@
+*Commande de création via le terminal:
+
+CREATE DATABASE nom_de_la_base_de_donnees;
+USE nom_de_la_base_de_donnees;
+
+*Créer un utilisateur avec un mot de passe : 
+Si vous souhaitez ajouter un utilisateur MySQL avec un mot de passe, 
+utilisez la commande suivante :
+
+CREATE USER 'nouvel_utilisateur'@'localhost' IDENTIFIED BY 'votre_mot_de_passe';
+
+
+*Accorder des privilèges à l'utilisateur sur la base de données : 
+Ensuite, vous devez donner à cet utilisateur des droits sur la base de données 
+que vous venez de créer :
+
+GRANT ALL PRIVILEGES ON nom_de_la_base_de_donnees.* TO 'nouvel_utilisateur'@'localhost';
+
+
+Appliquer les modifications : Une fois les privilèges accordés, 
+assurez-vous d'appliquer les modifications avec cette commande :
+
+FLUSH PRIVILEGES;
+
+
+
+
+Synthèse : 
+
+Étape 1 : Vérifier si MySQL est installé
+
+Si MySQL n'est pas installé sur votre machine. 
+Vous pouvez vérifier cela avec la commande suivante :
+
+bash
+
+mysql --version
+
+Si MySQL n'est pas installé, vous verrez un message d'erreur indiquant 
+que la commande mysql n'est pas trouvée.
+
+
+Étape 2 : Installer MySQL
+
+Si MySQL n'est pas installé, vous pouvez l'installer en utilisant apt 
+(sur Ubuntu ou une distribution basée sur Debian) :
+
+    Mettre à jour les paquets disponibles :
+
+    bash
+
+sudo apt update
+
+
+
+Installer le serveur MySQL :
+
+bash
+
+sudo apt install mysql-server
+
+
+Démarrer le service MySQL :
+
+Après l'installation, démarrez le service MySQL :
+
+bash
+
+sudo systemctl start mysql
+
+
+Vérifier le statut de MySQL :
+
+Pour vous assurer que MySQL est bien en cours d'exécution :
+
+bash
+
+    sudo systemctl status mysql
+
+
+
+Étape 3 : Si vous utilisez Docker pour MySQL
+
+Si vous prévoyez d'utiliser MySQL dans un environnement Docker, 
+vous n'avez pas besoin d'installer MySQL directement sur votre machine. 
+Au lieu de cela, vous devez configurer MySQL dans un conteneur Docker. 
+Voici comment le faire si vous ne l'avez pas encore configuré :
+
+    Créer un fichier docker-compose.yml :
+
+    Si vous utilisez Docker, créez un fichier docker-compose.yml pour MySQL 
+    dans le répertoire de votre projet :
+
+    yaml
+
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: nom_de_la_base_de_donnees
+      MYSQL_USER: your_user
+      MYSQL_PASSWORD: your_user_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+
+
+Lancer le conteneur Docker avec MySQL :
+
+Ensuite, exécutez la commande suivante dans votre terminal pour démarrer le conteneur Docker avec MySQL :
+
+bash
+
+docker-compose up -d
+
+
+Vérifier si le conteneur fonctionne :
+
+Vous pouvez vérifier si le conteneur est en cours d'exécution avec :
+
+bash
+
+docker ps
+
+
+
+*Se connecter au conteneur MySQL :
+
+Pour vous connecter à MySQL dans le conteneur Docker, utilisez cette commande :
+
+bash
+
+    docker exec -it mysql-container mysql -u root -p
+
+Cela vous permettra de configurer et d'utiliser MySQL dans un conteneur Docker. 
+Assurez-vous de personnaliser les mots de passe et autres paramètres dans 
+le fichier docker-compose.yml.
+
+
+
+*Quand tout cela réaliser:
+
+Accéder à MYSQL via le bash:
+
+D'abord l'état du service MySQL:
+
+sudo systemctl status mysql
+
+ 
+Démarrage MySQL:
+
+sudo systemctl start mysql
+
+
+Se connecter à MySQL via le terminal
+
+Tout d'abord, vous devez accéder à MySQL via le terminal. 
+Voici comment vous pouvez le faire :
+
+mysql -u root -p
+
+
+Après avoir entré la commande ci-dessus, MySQL vous demandera votre mot de passe 
+(pour l'utilisateur root ou un autre utilisateur MySQL si vous en avez un).
+
+2. Créer un utilisateur et lui attribuer un mot de passe
+
+Une fois connecté à MySQL, vous pouvez exécuter les commandes SQL comme suit :
+
+sql
+
+CREATE USER 'benoit'@'localhost' IDENTIFIED BY 'bztwwtq';
+
+Assurez-vous que le mot de passe bztwwtq est entre guillemets simples, 
+car il s'agit d'une chaîne de caractères.
+
+
+3. Accorder des privilèges à l'utilisateur
+
+Ensuite, vous pouvez accorder à l'utilisateur benoit les privilèges sur 
+une base de données spécifique (si vous en avez une de prête) :
+
+sql
+
+GRANT ALL PRIVILEGES ON nom_de_la_base_de_donnees.* TO 'benoit'@'localhost';
+
+
+Puis, appliquez les privilèges :
+
+sql
+
+FLUSH PRIVILEGES;
+
+4. Quitter MySQL
+
+Après avoir terminé, vous pouvez quitter MySQL avec :
+
+sql
+
+EXIT;
+
+
+
+
+Vérifier si vous utilisez Docker pour MySQL :
+
+1 Si vous utilisez Docker pour exécuter MySQL, assurez-vous que le conteneur MySQL 
+est en cours d'exécution. Voici comment vérifier cela :
+
+bash
+
+docker ps
+
+2 Si le conteneur MySQL n'est pas en cours d'exécution, vous devrez démarrer 
+le conteneur. 
+Si vous avez un fichier docker-compose.yml configuré pour MySQL, 
+vous pouvez le démarrer avec :
+
+bash
+
+docker-compose up -d
+
+
+3 Configurer la connexion MySQL dans Docker :
+
+Si vous utilisez Docker pour MySQL, assurez-vous de vous connecter à MySQL 
+à l'aide de l'adresse IP correcte du conteneur ou de localhost 
+si vous utilisez les ports exposés. 
+
+
+Voici un exemple de commande pour se connecter à MySQL dans un conteneur Docker :
+
+bash
+
+docker exec -it <mysql-container-name> mysql -u root -p
+
+
+Remplacez <mysql-container-name> par le nom de votre conteneur MySQL.
+
+4 Vérifier le fichier de configuration MySQL :
+
+Si vous travaillez en dehors de Docker et que le service MySQL est installé 
+localement mais que le socket est manquant, 
+vérifiez le fichier de configuration MySQL (/etc/mysql/my.cnf ou /etc/my.cnf selon votre distribution). 
+Assurez-vous que le chemin du socket est correct. 
+Vous pouvez également redémarrer MySQL après avoir vérifié les configurations :
+
+bash
+
+    sudo systemctl restart mysql
+
+Récapitulatif des actions :
+
+    Vérifiez si MySQL est installé et démarrez le service avec sudo systemctl start mysql.
+    Si vous utilisez Docker, assurez-vous que le conteneur MySQL fonctionne et connectez-vous avec docker exec.
+    Si nécessaire, réinstallez ou vérifiez la configuration de MySQL.
+
+
+
+
+-- Création de la base de données
+CREATE DATABASE nom_de_la_base_de_donnees;
+USE nom_de_la_base_de_donnees;
+
+-- Création d'un utilisateur avec un mot de passe
+CREATE USER 'nouvel_utilisateur'@'localhost' IDENTIFIED BY 'votre_mot_de_passe';
+
+-- Accorder des privilèges à cet utilisateur sur la base de données
+GRANT ALL PRIVILEGES ON nom_de_la_base_de_donnees.* TO 'nouvel_utilisateur'@'localhost';
+
+-- Appliquer les privilèges
+FLUSH PRIVILEGES;

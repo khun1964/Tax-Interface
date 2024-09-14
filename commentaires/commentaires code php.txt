@@ -50,10 +50,13 @@ $conn->close();
 
 ?>
 
+
+
 3. Sécurité et Bonnes Pratiques
 
     Validation des Données : Avant d'insérer les données dans la base, 
-    validez-les pour vous assurer qu'elles sont du bon format et qu'elles ne contiennent pas de SQL Injection ou d'autres formes d'attaque.
+    validez-les pour vous assurer qu'elles sont du bon format et qu'elles ne contiennent pas de SQL Injection 
+    ou d'autres formes d'attaque.
     
     Utilisation de Prepared Statements : Comme montré dans l'exemple ci-dessus, 
     l'utilisation de prepared statements (déclarations préparées) aide à protéger contre les injections SQL.
@@ -65,12 +68,19 @@ En suivant ces étapes, vous pouvez efficacement et en toute sécurité insérer
 dans une base de données SQL à partir d'une page HTML.
 
 
-ChatGPT
 
-D'accord, votre objectif est de tester différentes technologies pour voir comment elles fonctionnent avec votre HTML, CSS et JavaScript, tout en gardant en vue la cybersécurité. Cela peut être très instructif, surtout si vous envisagez de tester ces technologies sur des environnements cloud à l'avenir.
+
+D'accord, votre objectif est de tester différentes technologies pour voir comment elles fonctionnent avec 
+votre HTML, CSS et JavaScript, tout en gardant en vue la cybersécurité. 
+Cela peut être très instructif, surtout si vous envisagez de tester ces technologies sur des environnements 
+cloud à l'avenir.
+
 1. Utilisation de PHP
 
-PHP est en effet une option plus simple pour certains cas d'utilisation, surtout si vous souhaitez rapidement connecter votre page HTML à une base de données MySQL sans avoir à configurer un environnement de développement complexe comme celui de Java avec Spring Boot ou Node.js avec Express.
+PHP est en effet une option plus simple pour certains cas d'utilisation, surtout si vous souhaitez 
+rapidement connecter votre page HTML à une base de données MySQL sans avoir à configurer 
+un environnement de développement complexe comme celui de Java avec Spring Boot ou Node.js avec Express.
+²
 Exemple avec PHP
 
 Votre HTML et JavaScript resteront quasiment les mêmes, et vous pouvez utiliser PHP pour traiter les requêtes POST. Voici un exemple simplifié :
@@ -88,7 +98,7 @@ HTML et JavaScript:
 
     <script>
         function sendData() {
-            var income = document.getElementById('income').value;
+            var income = document.getElementById('income').value;ChatGPT
             fetch('submit_data.php', {
                 method: 'POST',
                 headers: {
